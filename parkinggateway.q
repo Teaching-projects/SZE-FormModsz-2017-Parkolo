@@ -24,3 +24,18 @@ E<> BARRIER(0).OPENED and BARRIER(1).CLOSED
 Van-e olyan \u00e1llapot mikor a k\u00e1rtyaolvas\u00f3 PAY \u00e1llapotba ker\u00fcl
 */
 E<> CARDREADER.PAY
+
+/*
+Ker\u00fcl e PUSPRINT \u00e1llapotba \u00fagy az egyik aut\u00f3, hogy a lockIn \u00e9rt\u00e9ke hamis
+*/
+E<> CAR(0).PUSHPRINT and lockIn == false
+
+/*
+Ker\u00fcl e CARDIN \u00e1llapotba \u00fagy az egyik aut\u00f3, hogy a lockOut \u00e9rt\u00e9ke hamis
+*/
+E<> CAR(0).CARDIN and lockOut == false
+
+/*
+Ellen\u0151rzi, hogy van e olyan eset amikor k\u00e9t aut\u00f3 halad \u00e1t egyszerre ugyanazon a soromp\u00f3 alatt
+*/
+A[] forall(x :carType)  forall(y :carType) CAR(x).BAROPENED and CAR(y).BAROPENED and CAR(x).carBar == CAR(y).carBar imply x == y
