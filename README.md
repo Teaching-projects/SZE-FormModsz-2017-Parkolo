@@ -1,2 +1,2 @@
-# uppall
-Uppall stuff
+# uppaal
+Uppaal stuff
